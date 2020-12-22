@@ -2,13 +2,16 @@
 This project aims to provide a foundation for decentralized organization governence system.
 
 ## Usage
-To test:
+To run tests:
+
     go test ./... -covermode=count
 
 To build:
+
     go build -o themachine cmd/themachine/main.go
 
 To run:
+
     ./themachine
 
 
