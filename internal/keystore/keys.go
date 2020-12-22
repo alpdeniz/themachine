@@ -34,7 +34,7 @@ const iterations = 1000000
 
 // Derivation Paths
 var MasterKeyDerivationPath = "0" // "0/1'/5'/10"
-// 
+//
 var salt = []byte{2, 243, 118, 3, 1, 98, 46, 254, 251, 7, 1, 0, 33, 16, 100, 182, 207, 199, 255, 54, 13}
 
 // Opens up and loads the keypairs saved in this node
