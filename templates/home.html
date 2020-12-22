@@ -1,0 +1,21 @@
+{{template "header.html" . }}
+
+<div id="organizations">
+    {{if .Organizations}}
+
+    <ul>
+        {{range .Organizations}}
+                <li class="active">
+                    <h4>{{.Name}}</h4>
+                    <div>{{.Description}}</div>
+                    <div>{{.Transaction}}</div>
+                    <div>{{.MasterPublicKey}}</div>
+                </li>
+        {{end}}
+    </ul>
+    {{else}}
+        There is no organization yet
+    {{end}}
+</div>
+
+{{template "footer.html" . }}

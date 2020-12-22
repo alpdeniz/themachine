@@ -1,0 +1,8 @@
+{{template "header.html" . }}
+<ul>
+    {{range .Keys}}
+        <li>{{.Name}} - {{.DerivationPath}} - {{.Address}}</li>
+    {{end}}
+</ul>
+
+{{template "footer.html" . }}

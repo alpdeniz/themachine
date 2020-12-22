@@ -1,0 +1,12 @@
+{{template "header.html" . }}
+
+{{if .Result}}
+<ul>
+    {{ .Result}}
+</ul>
+{{else}}
+<div>No result for code executed</div> 
+{{end}}
+
+
+{{template "footer.html" . }}

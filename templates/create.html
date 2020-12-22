@@ -1,0 +1,44 @@
+{{template "header.html" . }}
+
+<h2>Create a new transaction</h2>
+<form id="createTransaction" method="POST" action="/create">
+    <div class="dropdown" id="objectType">
+        <select name="objectType">
+            {{range .ObjectTypes}}
+                <option value="{{.Value}}">{{.Name}}</option>
+            {{end}}
+        </select>
+    </div>
+    <div class="dropdown" id="organizations">
+        <h5>Select organization</h5>
+        <select name="organization" id="organization">
+            <option id="newOrganization" value="">New organization</option>
+            {{range .Organizations}}
+                <option value="{{.Transaction}}">{{.Name}}</option>
+            {{end}}
+        </select>
+    </div>
+    <div class="dropdown" id="keys">
+        <h5>Keys</h5>
+        <select name="key" id="key">
+            {{range .Keys}}
+            <option value="{{.Name}}">{{.Name}}</option>
+            {{end}}
+        </select>
+    </div>
+    <div class="textarea">
+        <textarea name="data">
+
+        </textarea>
+    </div>
+    <div class="input">
+        <input name="targetPaths" placeholder="0/5/1', 0/4/*"/>
+    </div>
+    <!-- <div class="send">
+        <input type="button" value="Send"/>
+    </div> -->
+</form>
+
+<button type="submit" form="createTransaction" value="Submit">Send</button> 
+
+{{template "footer.html" . }}
