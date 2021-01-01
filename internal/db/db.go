@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"math/big"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -17,7 +16,7 @@ var KeyDBClient mongo.Collection
 
 // Transaction structure
 type MainDBItem struct {
-	Index                   big.Int
+	Index                   uint64
 	Hash                    []byte
 	PrevHash                []byte
 	Date                    time.Time

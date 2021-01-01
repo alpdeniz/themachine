@@ -3,7 +3,6 @@ package transaction
 // Types for transaction package
 
 import (
-	"math/big"
 	"time"
 )
 
@@ -17,7 +16,7 @@ type Organization struct {
 }
 
 type Transaction struct {
-	Index                     big.Int       // Index to work out longest chain
+	Index                     uint64        // Index to work out longest chain
 	Hash                      []byte        // hash of transaction contents
 	Meta                      [4]byte       // To store transaction type + some flags
 	ObjectType                ObjectType    // see TransactionObjectType

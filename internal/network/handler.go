@@ -8,7 +8,6 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
-	"math/big"
 	"net"
 	"strings"
 
@@ -69,12 +68,16 @@ func (c *Connection) handle(ch chan<- ConnectionChannel) {
 				fmt.Println("Error getting the last transaction as head", err)
 			}
 			// sends back the last index it has
-			c.write(prependCode(HeadResponse, lastTx.Index.Bytes()))
+			var tmp = make([]byte, 8)
+			// cast uint64 to bytes
+			binary.BigEndian.PutUint64(tmp, lastTx.Index)
+			respnse := prependCode(HeadResponse, tmp)
+			fmt.Println("Response to write", respnse)
+			c.write(respnse)
 
 		case HeadResponse:
 
-			index := new(big.Int)
-			index.SetBytes(message)
+			index := binary.BigEndian.Uint64(message[1:])
 			fmt.Println("Got head response", index)
 
 		case Fetch:

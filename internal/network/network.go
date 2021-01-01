@@ -36,7 +36,7 @@ var peers []string                    // keeps active peer list as string
 var knownPeers []string               // keeps all peer list as string
 var ch = make(chan ConnectionChannel) // connection save/remove channel
 var stopServer = false
-var seeds = []string{"164.90.197.171"}
+var seeds = []string{}
 
 // StartSocket fires up the socket listener and signal channel handler
 // param port int (optional)

@@ -45,7 +45,7 @@ func Open() bool {
 	reader := bufio.NewReader(os.Stdin)
 	password, err := reader.ReadString('\n')
 	if err != nil {
-		fmt.Println("Cannot read passwod, using default")
+		fmt.Println("Cannot read password, using default")
 		password = "123"
 	}
 	// Trim new line

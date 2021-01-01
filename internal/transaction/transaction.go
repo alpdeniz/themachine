@@ -44,10 +44,10 @@ func Process(transactionBytes []byte) (*Transaction, error) {
 // check if transaction is valid
 func (tx *Transaction) Validate() (bool, error) {
 
-	ok, err := tx.CheckInitialSignature()
-	if !ok {
-		return false, err
-	}
+	// ok, err := tx.CheckInitialSignature()
+	// if !ok {
+	// 	return false, err
+	// }
 
 	// check hash, check rules etc.
 	return true, nil

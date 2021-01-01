@@ -39,20 +39,6 @@ func (c *Connection) connect() ([]string, error) {
 	return peers, nil
 }
 
-func (c *Connection) read() ([]byte, error) {
-	message, err := bufio.NewReader(c.Conn).ReadBytes(MESSAGE_TERMINATOR)
-	if err != nil {
-		return nil, err
-	}
-
-	return message[:len(message)-1], nil
-}
-
-// write function writes the given message + EOF byte 0xFF
-func (c *Connection) write(message []byte) (int, error) {
-	return c.Conn.Write(endMessage(message))
-}
-
 // Relays the transaction to the connected node, response is handled in connection handler thread
 func (c *Connection) Relay(tx []byte) error {
 	fmt.Println("Relaying to ", c.Conn.RemoteAddr().String())
@@ -86,4 +72,19 @@ func endMessage(message []byte) []byte {
 
 func prependCode(ct MessageType, message []byte) []byte {
 	return append([]byte{byte(ct)}, message...)
+}
+
+// read & write (append message type and terminator bytes)
+func (c *Connection) read() ([]byte, error) {
+	message, err := bufio.NewReader(c.Conn).ReadBytes(MESSAGE_TERMINATOR)
+	if err != nil {
+		return nil, err
+	}
+
+	return message[:len(message)-1], nil
+}
+
+// write function writes the given message + EOF byte 0xFF
+func (c *Connection) write(message []byte) (int, error) {
+	return c.Conn.Write(endMessage(message))
 }

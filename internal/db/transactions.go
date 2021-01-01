@@ -56,7 +56,7 @@ func GetByObjectType(objectType byte) []MainDBItem {
 func Insert(dbItem MainDBItem) {
 	// get the last transaction
 	lastDbItem := GetLastTransaction()
-	dbItem.Index = lastDbItem.Index
+	dbItem.Index = lastDbItem.Index + 1
 	dbItem.PrevHash = lastDbItem.Hash
 	// go
 	_, err := MainDBClient.InsertOne(context.TODO(), dbItem)

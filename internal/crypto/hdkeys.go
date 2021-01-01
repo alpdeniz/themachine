@@ -42,6 +42,10 @@ func ParseDerivationPathString(path string) []uint32 {
 	var childIndex uint32
 	elems := strings.Split(path, "/")
 	for _, v := range elems {
+		if len(v) == 0 {
+			// decide what to do with "" or "0/1/" (ending with "/")
+			continue
+		}
 		if v != "*" {
 			childIndex = uint32(v[0])
 			if len(v) == 2 {
